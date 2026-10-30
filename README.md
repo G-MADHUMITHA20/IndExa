@@ -225,13 +225,4 @@ npm run build
 
 ---
 
-## Scope Restrictions for Phase 2
-The following modules are strictly out of scope for Phase 2 and will be implemented in subsequent phases:
-- Exam creation and paper authoring suites
-- Question management and question banks
-- Student exam-taking and test session workflows
-- Voice input and speech-to-text (Vosk / Whisper)
-- Text-to-speech assistive readers
-- Mathematical expression processing
-- Offline mode and service workers
-- Automated AI evaluation
+
