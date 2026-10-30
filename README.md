@@ -277,20 +277,35 @@ Deletable)                                            Accepts Students)        I
 
 ## Question Types Supported
 
-1. **Multiple-Choice Questions (MCQ):** Dynamic options list (minimum 2 non-empty options) with single option selection.
-2. **Short-Answer Questions:** Text prompt with accessible textarea input.
-3. **Long-Answer Questions:** Essay/descriptive prompt with accessible multi-line textarea and character/word counters.
+1. **Multiple-Choice Questions (MCQ):** Dynamic options list (minimum 2 non-empty options) with single option selection and clear Option A/B/C readback.
+2. **Short-Answer Questions:** Text prompt with accessible textarea input and character count.
+3. **Long-Answer Questions:** Essay/descriptive prompt with accessible multi-line textarea, character counter, and word counter.
 4. **Mathematical Expressions:** Text-based math equation and expression notation input.
 
 ---
 
-## Scope Restrictions for Prompt 4
-The following capabilities remain strictly out of scope for Phase 4 and will be implemented in subsequent phases:
-- Voice input / speech-to-text (Vosk)
-- Text-to-speech assistive readers
-- Advanced keyboard shortcuts
-- Complete explicit answer-confirmation interface (Prompt 7)
-- Advanced mathematical formula parsing & LaTeX rendering
-- Automatic evaluation / grading
-- Offline synchronization & service workers
-- Agentic AI
+## Accessibility & Assistive Features (Prompt 5)
+
+- **Web Speech Synthesis API:**
+  - Spoken examination instructions (duration, marks, navigation rules, autosave explanation, submission workflow).
+  - Question readback with option letters (Option A, Option B) for MCQs.
+  - Answer readback to review drafted or selected answers before submission.
+  - Speech lifecycle controls: Read Question, Repeat Question, Read My Answer, Pause, Resume, and Stop.
+  - Automatic speech cancellation on navigation or unmount to avoid overlapping audio.
+- **Keyboard Navigation (`Alt` Shortcuts):**
+  - `Alt + R`: Read current question aloud.
+  - `Alt + A`: Read current drafted answer aloud.
+  - `Alt + E`: Focus answer input / radio option.
+  - `Alt + Left Arrow`: Navigate to previous question (protected during text editing).
+  - `Alt + Right Arrow`: Navigate to next question (protected during text editing).
+  - `Alt + S`: Open examination submission confirmation dialog.
+  - `Alt + V`: Reserved for voice input (Prompt 6).
+  - `Alt + Enter`: Reserved for explicit answer confirmation (Prompt 7).
+- **Accessibility Settings:**
+  - Font scaling: Small, Medium, Large, Extra Large.
+  - High-Contrast Theme: Pure black/white/yellow contrast with 3px focus rings.
+  - Speech speed (0.5x–2.0x) and volume (0%–100%) sliders with audio preview test.
+  - Browser voice selector.
+  - Automatic question reading toggle.
+  - Persistent MongoDB storage per student account (`/student/preferences`).
+
