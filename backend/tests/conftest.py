@@ -26,6 +26,8 @@ async def setup_test_database():
     if db_manager.client:
         await db_manager.client.drop_database(TEST_DB_NAME)
         await db_manager.db.users.create_index("email", unique=True)
+        await db_manager.db.exam_attempts.create_index([("student_id", 1), ("exam_id", 1)])
+        await db_manager.db.student_preferences.create_index("student_id", unique=True)
 
     yield
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShieldCheck, LogIn, UserPlus, LogOut, LayoutDashboard } from 'lucide-react';
+import { ShieldCheck, LogIn, UserPlus, LogOut, LayoutDashboard, Sliders, Keyboard } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useAccessibility } from '../context/AccessibilityContext';
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
+  const { openSettings, openHelp } = useAccessibility();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -38,7 +40,7 @@ export default function Navbar() {
             <span className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
               IndExa
               <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono font-medium">
-                Phase 2
+                Phase 5
               </span>
             </span>
             <p className="text-xs text-slate-400 hidden sm:block">Accessible Digital Examination Platform</p>
@@ -47,6 +49,26 @@ export default function Navbar() {
 
         {/* Navigation / Authentication State */}
         <nav aria-label="Primary Navigation" className="flex items-center space-x-3">
+          {/* Universal Accessibility & Hotkey Buttons */}
+          <button
+            onClick={openSettings}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition-colors focus-visible:outline-2 focus-visible:outline-indigo-500"
+            aria-label="Open accessibility settings panel"
+            title="Accessibility Settings (Font size, high contrast, text-to-speech)"
+          >
+            <Sliders className="w-3.5 h-3.5 text-indigo-400" aria-hidden="true" />
+            <span className="hidden md:inline">Accessibility</span>
+          </button>
+
+          <button
+            onClick={openHelp}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition-colors focus-visible:outline-2 focus-visible:outline-indigo-500"
+            aria-label="View keyboard shortcuts"
+            title="Keyboard Shortcuts Cheat Sheet"
+          >
+            <Keyboard className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
+            <span className="hidden lg:inline">Shortcuts</span>
+          </button>
           {isAuthenticated && user ? (
             <div className="flex items-center space-x-3">
               <Link

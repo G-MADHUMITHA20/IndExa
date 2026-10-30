@@ -40,6 +40,17 @@ class MongoDBManager:
             try:
                 # Unique index on normalized email for user accounts
                 await self.db.users.create_index("email", unique=True)
+                # Indexes for exams collection
+                await self.db.exams.create_index([("teacher_id", 1), ("created_at", -1)])
+                await self.db.exams.create_index("status")
+                # Indexes for questions collection
+                await self.db.questions.create_index([("exam_id", 1), ("order", 1)])
+                # Indexes for exam attempts collection
+                await self.db.exam_attempts.create_index([("student_id", 1), ("exam_id", 1)])
+                await self.db.exam_attempts.create_index([("exam_id", 1)])
+                await self.db.exam_attempts.create_index("status")
+                # Indexes for student preferences collection
+                await self.db.student_preferences.create_index("student_id", unique=True)
                 logger.info("MongoDB collection indexes initialized successfully.")
             except Exception as e:
                 logger.warning("MongoDB index initialization warning: %s", type(e).__name__)

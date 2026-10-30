@@ -12,6 +12,7 @@
     min-height: 100vh;
     background-color: #030712;
     color: #f8fafc;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   /* Clear and accessible keyboard focus visibility */
@@ -19,4 +20,133 @@
     outline: 2px solid #6366f1;
     outline-offset: 3px;
   }
+}
+
+/* -------------------------------------------------------------
+   Font Size Scaling Classes
+   ------------------------------------------------------------- */
+body.font-size-small {
+  font-size: 14px;
+}
+
+body.font-size-medium {
+  font-size: 16px;
+}
+
+body.font-size-large {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+body.font-size-large h1 {
+  font-size: 2.25rem;
+}
+
+body.font-size-large h2 {
+  font-size: 1.75rem;
+}
+
+body.font-size-large h3 {
+  font-size: 1.35rem;
+}
+
+body.font-size-large p,
+body.font-size-large textarea,
+body.font-size-large input,
+body.font-size-large label,
+body.font-size-large button {
+  font-size: 1.125rem;
+}
+
+body.font-size-extra-large {
+  font-size: 22px;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+body.font-size-extra-large h1 {
+  font-size: 2.75rem;
+}
+
+body.font-size-extra-large h2 {
+  font-size: 2.15rem;
+}
+
+body.font-size-extra-large h3 {
+  font-size: 1.65rem;
+}
+
+body.font-size-extra-large p,
+body.font-size-extra-large textarea,
+body.font-size-extra-large input,
+body.font-size-extra-large label,
+body.font-size-extra-large button {
+  font-size: 1.35rem;
+}
+
+/* -------------------------------------------------------------
+   High-Contrast Display Mode (WCAG AAA Target)
+   ------------------------------------------------------------- */
+body.high-contrast {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast *:focus-visible {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 3px !important;
+}
+
+body.high-contrast .bg-slate-950,
+body.high-contrast .bg-slate-900,
+body.high-contrast .bg-slate-800,
+body.high-contrast .bg-slate-900\/90,
+body.high-contrast .bg-slate-900\/80,
+body.high-contrast .bg-slate-950\/80,
+body.high-contrast .bg-slate-950\/60,
+body.high-contrast .bg-slate-950\/40 {
+  background-color: #0a0a0a !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast .text-slate-400,
+body.high-contrast .text-slate-500,
+body.high-contrast .text-slate-300,
+body.high-contrast .text-slate-200 {
+  color: #f1f5f9 !important;
+}
+
+body.high-contrast .border-slate-800,
+body.high-contrast .border-slate-700 {
+  border-color: #ffffff !important;
+  border-width: 2px !important;
+}
+
+body.high-contrast button {
+  border: 2px solid #ffffff !important;
+}
+
+body.high-contrast .text-indigo-400,
+body.high-contrast .text-amber-400,
+body.high-contrast .text-emerald-400,
+body.high-contrast .text-sky-400 {
+  color: #ffff00 !important;
+  font-weight: 700 !important;
+}
+
+body.high-contrast .bg-indigo-600,
+body.high-contrast .bg-emerald-600,
+body.high-contrast .bg-amber-600 {
+  background-color: #000000 !important;
+  border: 2px solid #ffff00 !important;
+  color: #ffff00 !important;
+  font-weight: 700 !important;
+}
+
+body.high-contrast .bg-indigo-600:hover,
+body.high-contrast .bg-emerald-600:hover,
+body.high-contrast .bg-amber-600:hover {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
 }

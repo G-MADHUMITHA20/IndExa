@@ -8,6 +8,8 @@ from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.database.mongodb import db_manager
 from app.api.auth import router as auth_router
+from app.api.exams import router as exams_router
+from app.api.student import router as student_router
 
 # Configure logging
 logging.basicConfig(
@@ -48,6 +50,14 @@ app.add_middleware(
 # Authentication and user endpoints
 app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
 app.include_router(auth_router, prefix=f"{settings.API_V1_STR}/auth", tags=["Authentication"], include_in_schema=False)
+
+# Exam and question management endpoints (Teacher only)
+app.include_router(exams_router, prefix="/exams", tags=["Exam Management"])
+app.include_router(exams_router, prefix=f"{settings.API_V1_STR}/exams", tags=["Exam Management"], include_in_schema=False)
+
+# Student examination and attempt endpoints (Student only)
+app.include_router(student_router, prefix="/student", tags=["Student Examination"])
+app.include_router(student_router, prefix=f"{settings.API_V1_STR}/student", tags=["Student Examination"], include_in_schema=False)
 
 
 @app.get("/", tags=["Root"])
